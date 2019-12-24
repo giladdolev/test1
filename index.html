@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html ng-app="myApp" ng-controller="myCtrl">
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <!-- <script src="components.js"></script> -->
+  <script src="./app.js"></script>
+  <script src="./data.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-4">
+        <h2 class="font-weight-bold text-center mb-2">ABC QUIZ</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 border border-light">
+        <h4 ng-show="!quizFinish" class="font-weight-bold text-center mt-3">you are  At:{{current+1}}/{{totalQuestions}} questions</h4>
+        <hr>
+        <div class="survey-head text-center">
+          <i class="fas fa-poll-h fa-3x blue-text mb-2"></i>
+          <p class="font-weight-normal" ng-show="!quizFinish">- fill one choise only-</p>
+        </div>
+        <hr>
+        <div class="row" ng-show="quizFinish">
+          YOUR SCORES IS:<h3>{{scores| number : 2}}</h3>
+        </div>
+        <div ng-show="!quizFinish">
+       
+        <quiz></quiz>
+          <hr>
+          <p ng-show=doSelectAnswer()>you select :{{currentQuestion.studentAnswer}}</p>
+          <p ng-hide=doSelectAnswer() ng-style={'color':'red'}>YOU MUST SELECT ANSWER</p>
+          <buttons></buttons>
+        </div>
+      </div>
+    </div>
+    <div ng-show="test"> {{currentQuestion}}</div>
+
+  </div>
+</html>
